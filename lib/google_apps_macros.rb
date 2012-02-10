@@ -168,16 +168,33 @@ end
 class DocumentMacros
   def self.get_doc(obj, args)
     doc_key = args[0]
+    action = false
+    domain = false
     if args.length == 2
-      edit = (args[1].strip == "edit")
-    else
-      edit = false
+      case args[1].strip
+        when "edit"
+          action = "edit"
+        when "view"
+          action = "view"
+        else /^[\w]+(\.+[\w-])+/
+          domain = args[1].strip
+      end
+    end
+    if args.length == 3
+      domain = args[1].strip if /^[\w]+(\.+[\w-])+/.match(args[1].strip)
+      action = "edit" if args[2].strip == "edit"
+      action = "view" if args[2].strip == "view"
     end
     if /^[\w-]+$/.match(doc_key)
-      if edit
-        url = "https://docs.google.com/document/d/#{doc_key}/edit"
+      if domain
+        url = "https://docs.google.com/a/#{domain}/document/"
       else
-        url = "https://docs.google.com/document/d/#{doc_key}"
+        url = "https://docs.google.com/document/"
+      end
+      if action
+        url += "d/#{doc_key}/#{action}"
+      else
+        url += "pub?id=#{doc_key}"
       end
       out = "<iframe src='#{url}' width='800' height='400'></iframe>"
     else
