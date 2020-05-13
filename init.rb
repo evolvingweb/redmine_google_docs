@@ -2,7 +2,7 @@ require 'redmine'
 
 require File.dirname(__FILE__) + '/lib/google_apps_macros.rb'
 
-Redmine::Plugin.register :redmine_googlesss do
+Redmine::Plugin.register :redmine_google_docs do
   name "Google Docs Plugin"
   author 'Tavish Armstrong'
   description 'Embed Google Docs in your redmine pages.'
