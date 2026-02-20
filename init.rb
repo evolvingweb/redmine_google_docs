@@ -6,7 +6,7 @@ Redmine::Plugin.register :redmine_google_docs do
   name "Google Docs Plugin"
   author 'Tavish Armstrong'
   description 'Embed Google Docs in your redmine pages.'
-  version '0.0.2'
+  version '6.0.0'
 
   Redmine::WikiFormatting::Macros.register do
     desc = "Redmine Google Spreadsheet Macro (gs)"

@@ -4,7 +4,6 @@ require 'yaml'
 include ActionView::Helpers::JavaScriptHelper
 
 module GoogleAppsMacros
-  unloadable
 class SpreadsheetMacros
   def self.googless_macro(googless_wiki_content, args, nohead=false)
     raise  "The correct usage is {{ googless(key,query) }}" unless args.length >= 1
