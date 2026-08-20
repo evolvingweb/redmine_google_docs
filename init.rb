@@ -1,12 +1,13 @@
 require 'redmine'
 
-require File.dirname(__FILE__) + '/lib/google_apps_macros.rb'
-
+# R7: no manual require — GoogleAppsMacros (lib/google_apps_macros.rb) autoloads
+# when the macros below run (Zeitwerk). refs #108530.
 Redmine::Plugin.register :redmine_google_docs do
   name "Google Docs Plugin"
   author 'Tavish Armstrong'
   description 'Embed Google Docs in your redmine pages.'
-  version '6.0.0'
+  version '7.0.0'
+  requires_redmine version_or_higher: '7.0.0'
 
   Redmine::WikiFormatting::Macros.register do
     desc = "Redmine Google Spreadsheet Macro (gs)"
